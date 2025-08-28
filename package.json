@@ -1,0 +1,25 @@
+{
+  "name": "storyline-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "productName": "Storyline Course",
+  "appId": "com.thaygioi.storyline",
+  "scripts": {
+    "start": "electron .",
+    "pack:win": "electron-builder --win nsis",
+    "pack:mac": "electron-builder --mac dmg"
+  },
+  "build": {
+    "files": ["app/**/*","main.js","preload.js","package.json"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64","ia32"] }] },
+    "mac": { "category": "public.app-category.education", "target": "dmg" },
+    "nsis": { "oneClick": true, "createDesktopShortcut": true }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
