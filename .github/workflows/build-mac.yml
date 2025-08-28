@@ -1,15 +1,28 @@
 name: Build macOS app
-on: { workflow_dispatch: {} }
+on:
+  workflow_dispatch:
+
 jobs:
   build-mac:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: npm ci
-      - run: npm run pack:mac
-      - uses: actions/upload-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps (CI)
+        run: npm ci
+
+      - name: Build mac (.app/.dmg)
+        run: npm run pack:mac
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: mac-dist
           path: dist/**
