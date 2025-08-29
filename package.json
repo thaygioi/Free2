@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "pack:win": "electron-builder --win nsis",
-    "pack:mac": "electron-builder --mac dmg"
+    "pack:mac": "electron-builder -p never --mac dmg"
   },
   "build": {
     "files": ["app/**/*", "main.js", "preload.js", "package.json"],
