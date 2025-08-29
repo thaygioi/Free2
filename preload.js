@@ -1,1 +1,1 @@
-// Không cần code gì nếu chỉ hiển thị nội dung tĩnh
+// Không cần expose API nào nếu chỉ hiển thị nội dung tĩnh
